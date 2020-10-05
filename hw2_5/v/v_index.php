@@ -5,5 +5,9 @@
  * $text - текст
  */
 ?>
+<h1>Смеси для защиты бетона</h1>
+<img src="v/img/main.jpg" alt="main">
+<p>
+    <?=nl2br($text)?>
+</p>
 
-<?=nl2br($text)?>

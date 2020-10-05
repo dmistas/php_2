@@ -11,7 +11,7 @@ abstract class C_Base extends C_Controller
 
      protected function before(){
 
-		$this->title = 'тест';
+		$this->title = 'Бетон-протект';
 		$this->content = '';
 		$this->keyWords="...";
 
@@ -19,12 +19,12 @@ abstract class C_Base extends C_Controller
 	}
 	
 	//
-	// Генерация базового шаблонаы
+	// Генерация базового шаблона
 	//	
 	public function render()
 	{
 		$vars = array('title' => $this->title, 'content' => $this->content,'kw' => $this->keyWords);
-		$page = $this->Template('v/v_main.php', $vars);				
+		$page = $this->Template('v/v_main.php', $vars);
 		echo $page;
 	}	
 }
