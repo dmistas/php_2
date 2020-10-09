@@ -3,7 +3,7 @@ $(document).ready(function(){
        var id_good = $(this).attr("class").substr(5);
 
        $.ajax({
-           url: "/order/add/",
+           url: "index.php?path=order/add",
            type: "POST",
            data:{
                id_good: id_good,

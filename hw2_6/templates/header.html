@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{{ title }}</title>
-    </head>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
-    <script type="text/javascript" src="/js/category.js"></script>
-    <body>
-        <ul>
-            {% for category in categories %}
-            <li>
-                <a href="/categories/?id={{ category.id_category }}" link="{{ category.id_category }}" class="category-link">{{ category.name }}</a>
-            </li>
-            {% endfor %}
-        </ul>
+<head>
+    <title>{{ title }}</title>
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src='js/main.js'></script>
+<script type="text/javascript" src="js/category.js"></script>
+<body>
+<div>
+    <a href="/user/">Личный кабинет</a>
+</div>
 
-    <div>
-        <a href="/user/">Личный кабинет</a>
-    </div>
+
+<h4>Каталог</h4>
+<ul style="font-size: 18px;">
+    {% for category in categories %}
+    <li>
+
+        <a href="index.php?path=categories/{{ category.id_category }}" link="{{ category.id_category }}" class="category-link">{{
+            category.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+
 
 

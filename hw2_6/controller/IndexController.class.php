@@ -8,12 +8,12 @@ class IndexController extends Controller
     function __construct()
     {
         parent::__construct();
-        $this->title .= ' | ДЕМО!!!';
+        $this->title .= ' | Главная';
     }
 	
 	//метод, который отправляет в представление информацию в виде переменной content_data
 	function index($data){
-		 return "test";
+		 return "Добро пожаловать в интернет магазин!";
 	}
 
 	/*function test($id){

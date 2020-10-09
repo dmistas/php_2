@@ -8,7 +8,8 @@ class App
         db::getInstance()->Connect(Config::get('db_user'), Config::get('db_password'), Config::get('db_base'));
 
         if (php_sapi_name() !== 'cli' && isset($_SERVER) && isset($_GET)) {
-            self::web($_GET['path'] ? $_GET['path'] : '');
+            self::web(isset($_GET['path']) ? $_GET['path'] : '');
+
         }
     }
 	
@@ -17,18 +18,22 @@ class App
 
 	
 
-    protected static function web($url)//–Œ”“≈–!!!
+    protected static function web($url)//–†–û–£–¢–ï–†!!!
     {
+//        echo "url= ".$url;
+//        print_r($_GET);
         $url = explode("/", $url);
+//        echo "—Ä–∞–∑–±–∏—Ç—ã–π url="."<br>";
+//        print_r($url);
         if (!empty($url[0])) {
-        $_GET['page'] = $url[0];//◊‡ÒÚ¸ ËÏÂÌË ÍÎ‡ÒÒ‡ ÍÓÌÚÓÎÎÂ‡
+        $_GET['page'] = $url[0];//–ß–∞—Å—Ç—å –∏–º–µ–Ω–∏ –∫–ª–∞—Å—Å–∞ –∫–æ–Ω—Ç—Ä–æ–ª–ª–µ—Ä–∞
         if (isset($url[1])) {
             if (is_numeric($url[1])) {
                 $_GET['id'] = $url[1];
             } else {
-                $_GET['action'] = $url[1];//˜‡ÒÚ¸ ËÏÂÌË ÏÂÚÓ‰‡
+                $_GET['action'] = $url[1];//—á–∞—Å—Ç—å –∏–º–µ–Ω–∏ –º–µ—Ç–æ–¥–∞
             }
-            if (isset($url[2])) {//ÙÓÏ‡Î¸Ì˚È Ô‡‡ÏÂÚ ‰Îˇ ÏÂÚÓ‰‡ ÍÓÌÚÓÎÎÂ‡
+            if (isset($url[2])) {//—Ñ–æ—Ä–º–∞–ª—å–Ω—ã–π –ø–∞—Ä–∞–º–µ—Ç—Ä –¥–ª—è –º–µ—Ç–æ–¥–∞ –∫–æ–Ω—Ç—Ä–æ–ª–ª–µ—Ä–∞
                 $_GET['id'] = $url[2];
             }
         }
@@ -42,8 +47,8 @@ class App
             $methodName = isset($_GET['action']) ? $_GET['action'] : 'index';
             $controller = new $controllerName();
 
-            // Î˛˜Ë ‰‡ÌÌÓ„Ó Ï‡ÒÒË‚‡ ‰ÓÒÚÛÔÌ˚ ‚ Î˛·ÓÈ ‚¸˛¯ÍÂ
-            //Ã‡ÒÒË‚ data - ˝ÚÓ Ï‡ÒÒË‚ ‰Îˇ ËÒÔÓÎ¸ÁÓ‚‡ÌËˇ ‚ Î˛·ÓÈ ‚¸˛¯ÍÂ
+            //–ö–ª—é—á–∏ –¥–∞–Ω–Ω–æ–≥–æ –º–∞—Å—Å–∏–≤–∞ –¥–æ—Å—Ç—É–ø–Ω—ã –≤ –ª—é–±–æ–π –≤—å—é—à–∫–µ
+            //–ú–∞—Å—Å–∏–≤ data - —ç—Ç–æ –º–∞—Å—Å–∏–≤ –¥–ª—è –∏—Å–ø–æ–ª—å–∑–æ–≤–∞–Ω–∏—è –≤ –ª—é–±–æ–π –≤—å—é—à–∫–µ
             $data = [
                 'content_data' => $controller->$methodName($_GET),
                 'title' => $controller->title,
@@ -55,8 +60,6 @@ class App
                 $loader = new Twig_Loader_Filesystem(Config::get('path_templates'));
                 $twig = new Twig_Environment($loader);
                 $template = $twig->loadTemplate($view);
-                
-
                 echo $template->render($data);
             } else {
                 echo json_encode($data);

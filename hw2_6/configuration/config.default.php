@@ -1,7 +1,7 @@
 <?php
 $config['db_user'] = 'root';
-$config['db_password'] = '';
-$config['db_base'] = 'test2';
+$config['db_password'] = '515298';
+$config['db_base'] = 'shop';
 $config['db_host'] = 'localhost';
 $config['db_charset'] = 'UTF-8';
 
